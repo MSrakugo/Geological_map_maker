@@ -66,8 +66,8 @@ def generate_geological_map(
         ax1.grid(True, color="white", linestyle='--', linewidth=0.7, zorder=2)
 
     # 軸の目盛りフォーマットを設定
-    ax1.xaxis.set_major_formatter(ticker.FuncFormatter(lambda x, _: f'{x:.2f}'))
-    ax1.yaxis.set_major_formatter(ticker.FuncFormatter(lambda x, _: f'{x:.2f}'))
+    ax1.xaxis.set_major_formatter(ticker.FuncFormatter(lambda x, _: f'{x:.3f}'))
+    ax1.yaxis.set_major_formatter(ticker.FuncFormatter(lambda x, _: f'{x:.3f}'))
 
     # 出典を画像内に追加
     credit_text = "Source: Seamless Digital Geological Map of Japan V2, GSJ, AIST"
