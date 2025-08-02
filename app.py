@@ -84,13 +84,7 @@ def generate_geological_map(
     plt.savefig(png_buf, format="png", dpi=300)
     png_buf.seek(0)
 
-    # PDF形式でメモリ上に保存
-    pdf_buf = BytesIO()
-    # [修正] PDF保存時にも解像度(dpi)を指定し、画質の劣化を防ぐ
-    plt.savefig(pdf_buf, format="pdf", dpi=300)
-    pdf_buf.seek(0)
-
-    return fig, png_buf, pdf_buf
+    return fig, png_buf
 
 # --- Streamlit アプリケーションのUI部分 ---
 st.set_page_config(layout="wide")
@@ -134,7 +128,7 @@ with st.sidebar:
 # メイン画面で地図を生成・表示
 st.subheader("生成された地質図")
 
-fig, png_data, pdf_data = generate_geological_map(
+fig, png_data = generate_geological_map(
     lat_min, lat_max, lon_min, lon_max, margin,
     show_xlabel, xlabel_fontsize,
     show_ylabel, ylabel_fontsize,
@@ -144,7 +138,7 @@ fig, png_data, pdf_data = generate_geological_map(
     show_grid
 )
 
-if fig and png_data and pdf_data:
+if fig and png_data:
     # 画面に地図を表示
     st.pyplot(fig)
     # アプリ画面上に出典を明記
@@ -155,10 +149,4 @@ if fig and png_data and pdf_data:
         data=png_data,
         file_name="geological_map.png",
         mime="image/png"
-    )
-    st.download_button(
-        label="📥 PDFをダウンロード (.pdf)",
-        data=pdf_data,
-        file_name="geological_map.pdf",
-        mime="application/pdf"
     )
