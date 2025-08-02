@@ -69,6 +69,10 @@ def generate_geological_map(
     ax1.xaxis.set_major_formatter(ticker.FuncFormatter(lambda x, _: f'{x:.2f}'))
     ax1.yaxis.set_major_formatter(ticker.FuncFormatter(lambda x, _: f'{x:.2f}'))
 
+    # 出典を画像内に追加
+    credit_text = "Source: Seamless Digital Geological Map of Japan V2, GSJ, AIST"
+    fig.text(0.99, 0.01, credit_text, ha='right', va='bottom', fontsize=7, color='black')
+
     plt.tight_layout()
 
     # --- ダウンロード用データの生成 ---
@@ -139,6 +143,8 @@ fig, png_data, pdf_data = generate_geological_map(
 if fig and png_data and pdf_data:
     # 画面に地図を表示
     st.pyplot(fig)
+    # アプリ画面上に出典を明記
+    st.caption("地図データ出典：産総研地質調査総合センター「シームレス地質図v2」")
 
     st.download_button(
         label="📥 画像をダウンロード (.png)",
