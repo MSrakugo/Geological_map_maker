@@ -37,6 +37,9 @@ def generate_geological_map(
             lat_min - margin, lat_max + margin
         ]
         ax1.imshow(image, extent=img_extent, alpha=0.8, zorder=1)
+        
+        # [修正] 地図レイヤーをラスタライズし、PDFに画像が正しく埋め込まれるようにする
+        ax1.set_rasterized(True)
 
     except requests.exceptions.RequestException as e:
         st.error(f"❌ 地図画像の取得に失敗しました (HTTPエラー): {e}")
@@ -66,8 +69,8 @@ def generate_geological_map(
         ax1.grid(True, color="white", linestyle='--', linewidth=0.7, zorder=2)
 
     # 軸の目盛りフォーマットを設定
-    ax1.xaxis.set_major_formatter(ticker.FuncFormatter(lambda x, _: f'{x:.2f}'))
-    ax1.yaxis.set_major_formatter(ticker.FuncFormatter(lambda x, _: f'{x:.2f}'))
+    ax1.xaxis.set_major_formatter(ticker.FuncFormatter(lambda x, _: f'{x:.3f}'))
+    ax1.yaxis.set_major_formatter(ticker.FuncFormatter(lambda x, _: f'{x:.3f}'))
 
     # 出典を画像内に追加
     credit_text = "Source: Seamless Digital Geological Map of Japan V2, GSJ, AIST"
@@ -83,7 +86,8 @@ def generate_geological_map(
 
     # PDF形式でメモリ上に保存
     pdf_buf = BytesIO()
-    plt.savefig(pdf_buf, format="pdf")
+    # [修正] PDF保存時にも解像度(dpi)を指定し、画質の劣化を防ぐ
+    plt.savefig(pdf_buf, format="pdf", dpi=300)
     pdf_buf.seek(0)
 
     return fig, png_buf, pdf_buf
