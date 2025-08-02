@@ -93,11 +93,12 @@ with st.sidebar:
     st.header("⚙️ 地図の範囲設定")
     col1, col2 = st.columns(2)
     with col1:
-        lat_max = st.number_input('最大緯度', value=34.00, format="%.4f")
-        lat_min = st.number_input('最小緯度', value=33.75, format="%.4f")
+        lat_min = st.number_input('最小緯度', value=33.7500, format="%.4f")
+        lat_max = st.number_input('最大緯度', value=34.0000, format="%.4f")
+        
     with col2:
-        lon_max = st.number_input('最大経度', value=133.57, format="%.4f")
-        lon_min = st.number_input('最小経度', value=133.52, format="%.4f")
+        lon_min = st.number_input('最小経度', value=133.2500, format="%.4f")
+        lon_max = st.number_input('最大経度', value=133.7000, format="%.4f")
     margin = st.number_input('地図範囲の余白', value=0.01, format="%.4f")
 
     st.header("🎨 ラベルとグリッドの設定")
