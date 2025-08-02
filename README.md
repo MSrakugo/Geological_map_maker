@@ -2,7 +2,7 @@
 
 [![Python](https://img.shields.io/badge/Python-%3E%3D3.11-blue.svg)](https://www.python.org/)
 [![Streamlit](https://img.shields.io/badge/Streamlit-1.47%2B-red.svg)](https://streamlit.io)
-[![Poetry](https://img.shields.io/badge/Poetry-1.5%2B-purple.svg)](https://python-poetry.org/)
+[![Poetry](https://img.shields.io/badge/Poetry-2.0%2B-purple.svg)](https://python-poetry.org/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
 産総研（AIST）の地質図APIを利用して、指定した緯度・経度の範囲の地質図をインタラクティブに生成し、表示をカスタマイズできるStreamlitアプリケーションです。
@@ -40,8 +40,10 @@ numpy = ">=2.3.2,<3.0.0"
 
 ### 1\. 前提条件
 
-  - [Python](https://www.python.org/downloads/) (3.11以上)
-  - [Poetry](https://www.google.com/search?q=https://python-poetry.org/docs/%23installation)
+* [Python](https://www.python.org/downloads/) (3.11以上)
+
+* [Poetry](https://python-poetry.org/docs/#installation) (2.0以上)
+
 
 ### 2\. セットアップ
 
