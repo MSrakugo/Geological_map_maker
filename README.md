@@ -51,7 +51,7 @@ numpy = ">=2.3.2,<3.0.0"
 
 ```bash
 git clone <repository-url>
-cd geological-marker
+cd Geological_map_maker
 ```
 
 Poetryを使用して、必要なライブラリをインストールします。
