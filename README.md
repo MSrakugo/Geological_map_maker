@@ -50,7 +50,7 @@ numpy = ">=2.3.2,<3.0.0"
 リポジトリをクローンし、ディレクトリに移動します。
 
 ```bash
-git clone <repository-url>
+git clone git@github.com:MSrakugo/Geological_map_maker.git
 cd Geological_map_maker
 ```
 
