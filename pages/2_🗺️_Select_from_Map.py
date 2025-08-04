@@ -81,7 +81,8 @@ if map_data.get("last_active_drawing"):
     st.subheader("生成された地質図")
     
     with st.spinner('地質図を生成中です...'):
-        fig, png_data, z = generate_geological_map(
+        # 戻り値のズームレベルの変数名を final_z に変更（分かりやすさのため）
+        fig, png_data, final_z = generate_geological_map(
             lat_min, lat_max, lon_min, lon_max, margin,
             show_xlabel, xlabel_fontsize,
             show_ylabel, ylabel_fontsize,
@@ -90,6 +91,10 @@ if map_data.get("last_active_drawing"):
             show_yticks, yticks_fontsize,
             show_grid, override_z
         )
+
+    if fig and png_data:
+        # 実際に使用されたズームレベルをユーザーに通知
+        st.info(f"ℹ️ ズームレベル {final_z} で地図を取得しました。")
 
     if fig and png_data:
         st.pyplot(fig)

@@ -31,6 +31,11 @@ with st.sidebar:
         lon_max = st.number_input('最大経度', value=133.7000, format="%.4f")
     margin = st.number_input('地図範囲の余白', value=0.01, format="%.4f")
 
+    manual_zoom = st.checkbox("ズームレベルを手動で設定する")
+    override_z = None
+    if manual_zoom:
+        override_z = st.slider("手動ズームレベル", min_value=5, max_value=18, value=12)
+
     st.header("🎨 ラベルとグリッドの設定")
     label_fontweight = st.selectbox('ラベルのフォントの太さ', ('normal', 'bold'), index=0)
 
