@@ -65,10 +65,8 @@ poetry install
 以下のコマンドでStreamlitサーバーを起動します。
 
 ```bash
-poetry run streamlit run app.py
+poetry run streamlit run 1_⌨️_Manual_Input.py.py
 ```
-
-*(注意: `app.py`は、実際のスクリプトファイル名に置き換えてください)*
 
 ブラウザで `http://localhost:8501` にアクセスすると、アプリケーションが表示されます。
 
